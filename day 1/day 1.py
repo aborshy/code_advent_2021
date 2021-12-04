@@ -1,1 +1,3 @@
-fileObject = open(inp)
+fileObject = open("input.txt", "r")
+
+testlist = fileObject.readline()
