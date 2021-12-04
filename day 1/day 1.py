@@ -1,0 +1,1 @@
+fileObject = open(inp)
