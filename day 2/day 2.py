@@ -2,7 +2,6 @@ with open('input.txt') as x:
     lines = x.readlines()
 
 lines = [x.strip() for x in lines]
-print(lines)
 
 move_dict = {
     "forward": "x+",
@@ -14,12 +13,9 @@ x = 0
 y = 0
 
 for n in lines:
-    a = move_dict[n[:-2]]
-    b = n[-1]
-
-    if a == 'x+':
-        x = eval(str(a) + str(b))
+    if move_dict[n[:-2]] == 'x+':
+        x = eval(str(move_dict[n[:-2]]) + str(n[-1]))
     else:
-        y = eval(str(a) + str(b))
+        y = eval(str(move_dict[n[:-2]]) + str(n[-1]))
 
 print(x*y)
