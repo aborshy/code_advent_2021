@@ -1,5 +1,5 @@
-with open('day 1/input.txt') as f:
-    lines = f.readlines()
+with open('day 1/input.txt') as x:
+    lines = x.readlines()
 
 depths = [int(x) for x in lines]
 count = 0
