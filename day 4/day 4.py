@@ -74,7 +74,7 @@ def play(flattened_boards, draw_nums):
                 return flattened_boards[n], draw
             if check_rows(flattened_boards[n]) == 'win':
                 return flattened_boards[n], draw
-    return "Error! No bingos!", 1
+    return "Error! No bingo's!", 1
 
 
 winner, winning_draw = play(flattened_boards, draw_nums)
