@@ -54,4 +54,5 @@ print(test.line())
 """
 after this i want to check each line seg list of coords against all others to see if there's any overlap
 (may have to div by 2 because of repeats (line 1 intersects with line 2, and line 2 intersects with line 1)
+also make it pretty whatever fuck you
 """
