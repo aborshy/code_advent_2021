@@ -7,25 +7,35 @@ raw_points = [x.split(" -> ") for x in lines]
 points_list = [[x.split(",") for x in y] for y in raw_points]
 points_list = [[[int(x) for x in a] for a in b] for b in points_list]
 
-"""
-assuming no negatives as a coordinate will be input, also only line segments with 45 deg slopes.
-"""
 
 class LineSeg:
 
     def __init__(self, points):
-        self.first_point = [points[0]]
-        self.second_point = [points[1]]
+        self.first_point = points[0]
+        self.second_point = points[1]
+        self.x1 = self.first_point[0]
+        self.x2 = self.second_point[0]
+        self.y1 = self.first_point[1]
+        self.y2 = self.second_point[1]
 
     def line(self):
         """
         creates a line segment and returns a list of all points
         """
-        horiz = list(range(self.first_point[0], self.second_point[0] + 1))
-        if horiz is []:             # if range is 0
+        if self.x2 > self.x1:
+            horiz = list(range(self.first_point[0], self.second_point[0] + 1))
+        else:
+            horiz = list(reversed(range(self.second_point[0], self.first_point[0] + 1)))
+
+        if horiz is []:  # if range is 0
             horiz = self.first_point[0]
-        vert = list(range(self.first_point[1], self.second_point[1] + 1))
-        if vert is []:              # if range is 0
+
+        if self.y1 < self.y2:
+            vert = list(range(self.first_point[1], self.second_point[1] + 1))
+        else:
+            vert = list(reversed(range(self.second_point[1], self.first_point[1] + 1)))
+
+        if vert is []:  # if range is 0
             vert = self.first_point[0]
 
         if len(horiz) > len(vert):
@@ -35,9 +45,14 @@ class LineSeg:
 
         return list(zip(horiz, vert))
 
-print(points_list)
 
-all_lines = [LineSeg(x) for x in points_list]
+
+#all_lines = [LineSeg(x) for x in points_list]
+
+test = LineSeg(points_list[3])
+print(test.line())
+
+
 
 """
 after this i want to check each line seg list of coords against all others to see if there's any overlap
