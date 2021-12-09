@@ -22,7 +22,7 @@ class LineSeg:
         """
         creates a line segment and returns a list of all points
         """
-        if self.x2 > self.x1:
+        if self.x1 < self.x2:
             horiz = list(range(self.first_point[0], self.second_point[0] + 1))
         else:
             horiz = list(reversed(range(self.second_point[0], self.first_point[0] + 1)))
