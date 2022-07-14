@@ -1,6 +1,19 @@
 import os
 from datetime import date
 
+"""
+Example structure:
+    ~Advent of Code 2015
+        -- Day 1
+        -- Day 2
+        -- etc.
+    ~Advent of Code 2016
+        -- Day 1
+        -- Day 2
+        -- etc.
+    ~etc.
+"""
+
 
 def create_structure():
     """
