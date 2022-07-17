@@ -1,12 +1,28 @@
 class Part1:
     @staticmethod
     def solution(file_lines: list[str]) -> int:
+        """
+
+        Args:
+            file_lines: List of lines from input file
+
+        Returns:
+
+        """
         return 0
 
 
 class Part2:
     @staticmethod
     def solution(file_lines: list[str]) -> int:
+        """
+
+        Args:
+            file_lines: List of lines from input file
+
+        Returns:
+
+        """
         return 0
 
 
