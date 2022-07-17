@@ -1,13 +1,13 @@
 class Part1:
     @staticmethod
-    def solution(file_lines: list) -> int:
-        pass
+    def solution(file_lines: list[str]) -> int:
+        return 0
 
 
 class Part2:
     @staticmethod
-    def solution(file_lines: list) -> int:
-        pass
+    def solution(file_lines: list[str]) -> int:
+        return 0
 
 
 with open("input.txt", "r") as file:
