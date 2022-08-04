@@ -30,8 +30,8 @@ def create_structure():
     file into. Comment out line 37 to create tree in current directory.
     :return: None
     """
-    main_dir = [f"Advent of Code {x}" for x in range(2015, date.today().year + 1)]
-    common_dir = [f"Day {x}" for x in range(1, 26)]
+    main_dir = [f"advent_of_code_{x}" for x in range(2015, date.today().year + 1)]
+    common_dir = [f"day_{x:02d}" for x in range(1, 26)]
 
     # makes it so script can be run from utils folder and populate main dir, comment out to do in current dir
     os.chdir('../')
@@ -49,9 +49,9 @@ def create_structure():
                 shutil.copy('utils/testing_template.py', f"{dir1}/{dir2}/tests.py")
                 with open(f'{dir1}/{dir2}/input.txt', 'w') as f:
                     f.write('')
-
             except OSError:
-                pass
+                print(f"Passing over {dir1}/{dir2} as path is currently occupied.")
+                continue
         with open(f'{dir1}/readme.txt', 'w') as f:
             f.write('Placeholder readme! Please change me!')
 

@@ -13,6 +13,7 @@ class Part1:
         The input to the MD5 hash is some secret key (your puzzle input, given below) followed by a number in decimal.
         To mine AdventCoins, you must find Santa the lowest positive number (no leading zeroes: 1, 2, 3, ...) that
         produces such a hash.
+
         Args:
             file_lines: List of lines from input file
 
