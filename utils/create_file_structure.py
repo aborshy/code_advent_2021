@@ -1,28 +1,63 @@
 import os
 import shutil
 from datetime import date
+import time
 
 """
 Example structure:
-    ~Advent of Code 2015
-        -- Day 1
-            -testing_template.py
-            -solution_template.py
+    ~advent_of_code_2015
+        -- day_1
+            -tests.py
+            -solution.py
             -input.txt
-        -- Day 2
+        -- day_2
         -- etc.
-    ~Advent of Code 2016
-        -- Day 1
-            -testing_template.py
-            -solution_template.py
+    ~advent_of_code_2016
+        -- day_1
+            -tests.py
+            -solution.py
             -input.txt
-        -- Day 2
+        -- day_2
         -- etc.
     ~etc.
 """
 
 
-def create_structure():
+def input_years():
+    """
+    Prompts user to input years desired to generate.
+    Returns: None
+    """
+    print("Welcome to AoC file tree generator!\n")
+    while True:
+        try:
+            start_year = int(input("From which year would you like to generate files? (AoC started in 2015!)\n"))
+        except ValueError:
+            print("Not a valid year.")
+            continue
+        if start_year < 2015:
+            print("AoC didn't start then!")
+        else:
+            print(f"Accepted {start_year}.\n")
+            break
+
+    while True:
+        try:
+            end_year = int(input(f"Up to which year would you like to generate files?"
+                                 f" (It's currently {date.today().year}!)\n"))
+        except ValueError:
+            print("Not a valid year.")
+            continue
+        if end_year > date.today().year:
+            print("Please enter up to the current year.")
+        else:
+            print(f"Accepted {end_year}.\n")
+            break
+
+    return start_year, end_year
+
+
+def create_structure(start, end):
     """
     Creates file tree of every Advent of Code day and year, from first year (2015) up to the current
     year in the directory ABOVE this one. Adds a quick and rough testing file to build pytests with, a solution file to
@@ -30,7 +65,7 @@ def create_structure():
     file into. Comment out line 37 to create tree in current directory.
     :return: None
     """
-    main_dir = [f"advent_of_code_{x}" for x in range(2015, date.today().year + 1)]
+    main_dir = [f"advent_of_code_{x}" for x in range(start, end + 1)]
     common_dir = [f"day_{x:02d}" for x in range(1, 26)]
 
     # makes it so script can be run from utils folder and populate main dir, comment out to do in current dir
@@ -54,6 +89,12 @@ def create_structure():
                 continue
         with open(f'{dir1}/readme.txt', 'w') as f:
             f.write('Placeholder readme! Please change me!')
+        print(f"Created {dir1}")
 
 
-create_structure()
+s, e = input_years()
+print(f"Generating trees between {s} and {e}...")
+time.sleep(1)
+create_structure(s, e)
+print("Finished, exiting...")
+time.sleep(1)
