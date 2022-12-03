@@ -5,24 +5,4 @@ with open("input.txt", "r") as file:
 
 
 def test_part1_1():
-    assert s.Part1.solution(['']) == 0
-
-
-def test_part1_2():
-    assert s.Part1.solution(['']) == 0
-
-
-def test_part1_3():
-    assert s.Part1.solution(['']) == 0
-
-
-def test_part2_1():
-    assert s.Part2.solution(['']) == 0
-
-
-def test_part2_2():
-    assert s.Part2.solution(['']) == 0
-
-
-def test_part2_3():
-    assert s.Part2.solution(['']) == 0
+    assert s.Part1.solution(['1000','2000','3000','','4000','','5000','6000']) == 11000
