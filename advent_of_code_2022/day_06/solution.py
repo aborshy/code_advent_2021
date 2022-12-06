@@ -9,7 +9,14 @@ class Part1:
         Returns:
 
         """
-        return 0
+        x = 0
+        inp = file_lines[0]
+        code_length = 4
+        while True:
+            if len(set(inp[x:x+code_length])) == code_length:
+                break
+            x += 1
+        return x+code_length
 
 
 class Part2:
@@ -23,7 +30,15 @@ class Part2:
         Returns:
 
         """
-        return 0
+        x = 0
+        inp = file_lines[0]
+        code_length = 14
+        while True:
+            if len(set(inp[x:x+code_length])) == code_length:
+                break
+            x += 1
+        return x+code_length
+
 
 
 with open("input.txt", "r") as file:

@@ -9,7 +9,19 @@ class Part1:
         Returns:
 
         """
-        return 0
+        total = 0
+        for x in file_lines:
+            first_elf, second_elf = x.split(",")
+            first_elf = [int(x) for x in first_elf.split("-")]
+            f_range = range(first_elf[0],first_elf[1]+1)
+            second_elf = [int(x) for x in second_elf.split("-")]
+            s_range = range(second_elf[0], second_elf[1] + 1)
+
+            if (f_range[0] in s_range and f_range[-1] in s_range) or (s_range[0] in f_range and s_range[-1] in f_range):
+                total += 1
+
+
+        return total
 
 
 class Part2:
@@ -23,7 +35,18 @@ class Part2:
         Returns:
 
         """
-        return 0
+        total = 0
+        for x in file_lines:
+            first_elf, second_elf = x.split(",")
+            first_elf = [int(x) for x in first_elf.split("-")]
+            f_range = range(first_elf[0], first_elf[1] + 1)
+            second_elf = [int(x) for x in second_elf.split("-")]
+            s_range = range(second_elf[0], second_elf[1] + 1)
+
+            if (f_range[0] in s_range or f_range[-1] in s_range) or (s_range[0] in f_range or s_range[-1] in f_range):
+                total += 1
+
+        return total
 
 
 with open("input.txt", "r") as file:
