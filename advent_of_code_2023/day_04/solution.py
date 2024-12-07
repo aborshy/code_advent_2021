@@ -9,7 +9,20 @@ class Part1:
         Returns:
 
         """
-        return 0
+        output = 0
+        for x in file_lines:
+            winning, game = x.split(":")[1].strip().split("|")
+            winning = {x for x in winning.split(" ") if x != ""}
+            game = [x for x in game.split(" ") if x != ""]
+            points = 0
+            for x in game:
+                if x in winning:
+                    if points == 0:
+                        points += 1
+                    else:
+                        points *= 2
+            output += points
+        return output
 
 
 class Part2:
@@ -23,7 +36,24 @@ class Part2:
         Returns:
 
         """
-        return 0
+        output = file_lines
+        print(file_lines)
+        for n,x in enumerate(output):
+            winning, game = x.split(":")[1].strip().split("|")
+            winning = {int(x) for x in winning.split(" ") if x != ""}
+            print(winning)
+
+            game = {int(x) for x in game.split(" ") if x != ""}
+            print(game)
+            to_append = []
+            if len(game.intersection(winning)):
+                print(game.intersection(winning))
+                for x in output[n+1:n+len(game.intersection(winning))]:
+                    output.append(x)
+                continue
+
+
+        return len(output)
 
 
 with open("input.txt", "r") as file:
