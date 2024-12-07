@@ -9,14 +9,32 @@ class Part1:
         Returns:
 
         """
-        print(file_lines)
+        total = 0
 
-        # levels all increasing or decreasing
-        # step size of at least 1, max 3
-        # return rows that fill both above
+        for line in file_lines:
+            int_arr: list[int] = list(map(lambda x: int(x),line.split(" ")))
 
+            last = int_arr[0]
+            ascending = True
 
-        return 0
+            if last - int_arr[1] > 0:
+                ascending = False
+
+            for num in int_arr[1:]:
+                if ascending:
+                    if not 1 <= (num - last) <= 3:
+                        break
+                    else:
+                        last = num
+                if not ascending:
+                    if not 1 <= (last - num) <= 3:
+                        break
+                    else:
+                        last = num
+            else:
+                total += 1
+
+        return total
 
 
 class Part2:
@@ -30,8 +48,8 @@ class Part2:
         Returns:
 
         """
-        return 0
 
+        return 0
 
 with open("input.txt", "r") as file:
     f = file.read().splitlines()

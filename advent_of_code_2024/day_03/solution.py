@@ -1,3 +1,6 @@
+total = 0
+enabled = True
+
 class Part1:
     @staticmethod
     def solution(file_lines: list[str]) -> int:
@@ -9,7 +12,20 @@ class Part1:
         Returns:
 
         """
-        return 0
+        import re
+
+        for line in file_lines:
+            pattern = r"mul\(\d+,\d+\)"
+            matches = re.findall(pattern, line)
+
+            def mul(x,y):
+                global total
+                total += x*y
+
+            for func in matches:
+                exec(func, {"mul":mul, "total":total})
+
+        return total
 
 
 class Part2:
@@ -23,7 +39,40 @@ class Part2:
         Returns:
 
         """
-        return 0
+        import re
+
+        global total
+        total = 0
+
+        for line in file_lines:
+            pattern = r"mul\(\d+,\d+\)|do\(\)|don't\(\)"
+            matches = re.findall(pattern, line)
+
+            def mul(x,y):
+                global total
+                global enabled
+
+                if enabled:
+                    total += x*y
+
+            def do():
+                global enabled
+                enabled = True
+
+            def dont():
+                global enabled
+                enabled = False
+
+            for func in matches:
+                if func == "don't()":
+                    curr = "dont()"
+                else:
+                    curr = func
+
+                print(curr)
+                exec(curr, {"mul":mul, "total":total, "do":do, "dont":dont})
+
+        return total
 
 
 with open("input.txt", "r") as file:
