@@ -1,3 +1,5 @@
+from utils.helper import GridDict
+
 class Part1:
     @staticmethod
     def solution(file_lines: list[str]) -> int:
@@ -9,6 +11,9 @@ class Part1:
         Returns:
 
         """
+
+        grid = GridDict([[False for x in range(999)] for y in range(999)])
+
         return 0
 
 
